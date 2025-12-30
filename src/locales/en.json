@@ -1,0 +1,102 @@
+{
+    "header": {
+        "job_title": "Web Developer",
+        "email": "Email",
+        "phone": "Phone",
+        "birthday": "Birthday",
+        "location": "Location",
+        "birthday_val": "May 31, 1993",
+        "download_cv": "Download CV",
+        "contact": "Contact"
+    },
+    "nav": {
+        "home": "Home",
+        "about": "About Me",
+        "resume": "Resume",
+        "portfolio": "Portfolio",
+        "contact": "Contact"
+    },
+    "home": {
+        "chat_btn": "Chat with me"
+    },
+    "resume": {
+        "hero_title": "Experience",
+        "hero_subtitle": "My Professional Journey",
+        "exp_title": "Professional Experience",
+        "objective": "Objective:",
+        "view_project": "View Project",
+        "skills_title": "Skills",
+        "stack_tech": "Tech Stack",
+        "tech_label": "Technical",
+        "domains_label": "Domains",
+        "education_title": "Education",
+        "academic_bg": "Academic Background",
+        "degree_label": "Degree / Certification",
+        "languages_title": "Languages"
+    },
+    "contact": {
+        "hero_title": "Contact",
+        "hero_subtitle": "Let's discuss your projects",
+        "send_msg_title": "Send a message",
+        "name_label": "Your Name",
+        "email_label": "Your Email",
+        "subject_label": "Subject",
+        "message_label": "Message",
+        "send_btn": "Send",
+        "phone_label": "Phone",
+        "linkedin_label": "LinkedIn",
+        "view_profile": "View Profile",
+        "required": "Required.",
+        "invalid_email": "Invalid email.",
+        "msg_sent": "Message sent (Simulation)"
+    },
+    "portfolio": {
+        "hero_title": "Portfolio",
+        "hero_subtitle": "My Recent Projects",
+        "view_project": "View Project",
+        "internal_project": "Internal / Confidential Project"
+    },
+    "about": {
+        "hero_title": "About Me",
+        "what_i_do": "What I Do",
+        "testimonials": "Testimonials",
+        "services": {
+            "fullstack": {
+                "title": "FullStack Development",
+                "desc": "I design complete, high-performance, and scalable web applications using Symfony for the backend and modern frameworks like VueJS or NuxtJs for the frontend."
+            },
+            "frontend": {
+                "title": "Frontend Expertise",
+                "desc": "Specialist in developing rich and responsive interfaces. I master the JavaScript ecosystem (Vue 3, ES6+) and CSS preprocessors (Sass) for optimal UX."
+            },
+            "api": {
+                "title": "API Development",
+                "desc": "Design and implementation of robust RESTful APIs with API Platform. Secure and documented architecture to facilitate integration with frontend clients."
+            },
+            "agile": {
+                "title": "Agile Methodologies",
+                "desc": "Accustomed to Scrum/Agile environments. I actively participate in rituals (Sprint Planning, Daily, Retro) to ensure iterative and quality delivery."
+            }
+        }
+    },
+    "chatbot": {
+        "title": "CV Assistant",
+        "close": "Close",
+        "placeholder": "Ask me a question...",
+        "initial_msg": "Hello! 👋 I am Naim's AI. I know his entire background by heart. Test me!",
+        "answers": {
+            "identity": "I am <strong>{name}</strong>'s virtual assistant. He is a <strong>{title}</strong>. My role is to introduce you to his background in an interactive way! 😊",
+            "contact": "You can reach Naim easily:<br>📧 <strong>Email:</strong> <a href=\"mailto:{email}\">{email}</a><br>📱 <strong>Phone:</strong> {phone}<br>🔗 <strong>LinkedIn:</strong> <a href=\"https://{linkedin}\" target=\"_blank\">His profile</a><br><br>Don't hesitate to send him a message!",
+            "skills": "Naim has a wide range of skills. Here are a few:<br><br>🛠️ <strong>Tech Stack:</strong> {tech}...<br>🧠 <strong>Functional:</strong> {func}<br><br>He has a great ability to adapt to new tools!",
+            "experience": "With <strong>{exp}</strong> of experience, Naim has a solid profile.<br>Currently, he is working as a <strong>{role}</strong> at <strong>{client}</strong> ({period}).<br>There, he specifically uses: {tools}.",
+            "education": "Regarding education, Naim graduated from:<br>🎓 {edu}<br><br>He is fluent in: <strong>{langs}</strong>. 🌍",
+            "skill_match": "Absolutely! Naim is proficient in <strong>{skill}</strong>. He has used it in several real-world projects.",
+            "domain_match": "Yes, Naim has solid experience in the field: <strong>{domain}</strong>.",
+            "greetings": "Hello! Nice to see you here. How can I help you discover Naim's profile? 👋",
+            "thanks": "You're welcome! It's a pleasure to help. Anything else? 😊",
+            "sentiments": "I'm doing great, thank you! Always ready to talk about Naim's talent. How about you?",
+            "profile_summary": "{profile}<br><br>He is a developer passionate about code quality and user experience.",
+            "unknown": "Hmm, I don't have the exact answer to that... 🤔 But I can tell you about his skills, his experience at {client}, or give you his contact details!"
+        }
+    }
+}

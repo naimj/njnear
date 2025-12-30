@@ -1,0 +1,20 @@
+$color-bg-dark: #222;
+$color-bg-light: #444;
+$color-text-light: #ffffff;
+$color-primary: #04b4e0;
+$color-border: $color-bg-light;
+
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+
+$font-family: 'Poppins', Helvetica, sans-serif;
+$font-size-base: 16px;
+
+$transition: all 0.3s ease-in-out;
+$shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+$hover-color: $color-primary;
+
+:root {
+  interpolate-size: allow-keywords;
+}

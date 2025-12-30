@@ -1,0 +1,288 @@
+{
+  "personal_information": {
+    "name": "Jammali Naïm",
+    "phone": "06 28 11 00 07",
+    "email": "naimjammali.pro@gmail.com",
+    "title": "DÉVELOPPEUR FULL-STACK VUE.JS / SYMFONY",
+    "experience": "8 ans",
+    "linkedin": "www.linkedin.com/in/naim-jammali-b14a07107",
+    "profile": "Développeur Full-Stack avec une forte spécialisation front-end. J’interviens sur des missions exigeantes nécessitant des interfaces robustes, performantes et maintenables. Habitué aux contextes grands comptes et plateformes à fort trafic, je conçois des solutions fiables orientées produit, qualité du code et expérience utilisateur."
+  },
+  "skills": {
+    "functional": [
+      "Gros potentiel pour l’apprentissage de nouvelles technologies",
+      "Maîtrise en développement JavaScript (VanillaJS)",
+      "Maîtrise Php/Symfony/Twig",
+      "Maîtrise de développement API REST",
+      "Maîtrise de framework VueJS/NuxtJs",
+      "Connaissance DevOps (Docker, Jenkins)",
+      "Pratique de la méthodologie Agile Scrum"
+    ],
+    "technical": [
+      "Vue.js 3",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Sass",
+      "Vuetify",
+      "Nuxt",
+      "TypeScript",
+      "Atomic Design",
+      "Accessibilité",
+      "PHP",
+      "Symfony",
+      "API Platform",
+      "Twig",
+      "Doctrine",
+      "REST API"
+    ],
+    "domains": [
+      "Finance / Services financiers",
+      "Média / Information",
+      "E-commerce",
+      "Supply Chain / Reporting / Data"
+    ],
+    "methods_and_tools": [
+      "Git",
+      "GitLab CI/CD",
+      "Docker",
+      "Jenkins",
+      "Jira",
+      "Confluence",
+      "Agile/Scrum",
+      "VS Code",
+      "Figma",
+      "Ubuntu",
+      "Teams"
+    ]
+  },
+  "education_and_languages": {
+    "education": "Licence Informatique Appliqué, Gestion du Web / multimédia et webmaster - Institut Supérieur d'Informatique et des Techniques de Communication (Janvier 2012 — Janvier 2015)",
+    "languages": [
+      "Anglais",
+      "Français",
+      "Arabe"
+    ]
+  },
+  "work_experience": [
+    {
+      "position": "Développeur Front-End Senior – Vue.js",
+      "period": "Février 2025 — Présent",
+      "client": "CACEIS / Uptevia",
+      "project": "Uptevia",
+      "objective": "Refonte front-end d’une application de gestion d’augmentation de capital et de son back-office d’administration, avec contraintes fortes de sécurité, accessibilité, performance et maintenabilité.",
+      "tasks": [
+        "Intégration UI responsive / mobile-first à partir de maquettes Figma.",
+        "Développement front en Vue.js 3 / Vuetify (pages applicatives et back-office).",
+        "Implémentation des parcours d’authentification : login, OTP, reset password.",
+        "Développement de composants métiers custom : DateTimePicker, IBAN input, Phone input.",
+        "Gestion d’état, formulaires complexes et validations.",
+        "Intégration de charts et maps avec ECharts.",
+        "Mise en place d’un système de traduction i18n dynamique.",
+        "Développement de dataTables avancées (filtres, pagination, tri, volumétrie).",
+        "Création de modales, alertes et composants UI réutilisables.",
+        "Implémentation du thème clair / sombre.",
+        "Conception et développement d’un workflow de souscription multi-étapes.",
+        "Gestion des imports / exports de données (Excel, PDF).",
+        "Conformité HTML5 / W3C / accessibilité.",
+        "Travail en Agile Scrum (Sprint, Daily, Démo, Rétro).",
+        "Versioning et collaboration via GitLab."
+      ],
+      "tools": [
+        "Vue.js 3",
+        "Vuetify",
+        "JavaScript (ES6+)",
+        "HTML5",
+        "CSS3",
+        "Sass",
+        "ECharts",
+        "GitLab",
+        "Jenkins",
+        "Jira",
+        "Confluence",
+        "Figma",
+        "VS Code",
+        "Scrum",
+        "Ubuntu",
+        "Teams"
+      ]
+    },
+    {
+      "position": "Développeur Front Vue.js",
+      "period": "Mars 2024 — Décembre 2025",
+      "client": "France Médias Monde",
+      "projects": [
+        "France24",
+        "RFI",
+        "FLE",
+        "InfoMigrants"
+      ],
+      "links": [
+        "https://www.france24.com/",
+        "https://www.rfi.fr/"
+      ],
+      "objective": "Refonte et modernisation front-end de sites médias à forte audience, maintenance évolutive (TMA) et développement de fonctionnalités spécifiques, avec contraintes de performance, SEO et accessibilité.",
+      "tasks": [
+        "Refonte UI du site France24 avec intégration mobile-first / responsive depuis Figma.",
+        "Développement front en Vue.js sur un socle Symfony / Twig.",
+        "Mise en place et utilisation de l’Atomic Design pour la structuration des composants.",
+        "Migration progressive des composants Options API → Composition API.",
+        "Développement de fonctionnalités spécifiques et composants réutilisables.",
+        "Maintenance évolutive et corrective des sites RFI, FLE et InfoMigrants.",
+        "Intégration de pages statiques événementielles (Présidentielle US 2024, JO Paris 2024, Euro 2024).",
+        "Optimisation HTML / SEO et conformité W3C.",
+        "Gestion des évolutions, correctifs et incidents en environnement TMA.",
+        "Travail en méthodologie Agile Scrum (Sprint, Daily, Démo, Rétro).",
+        "Suivi des tickets et documentation via Jira et Confluence.",
+        "Versioning et collaboration via GitLab."
+      ],
+      "tools": [
+        "Vue.js",
+        "JavaScript (ES6+)",
+        "PHP / Symfony",
+        "Twig",
+        "HTML5",
+        "CSS3",
+        "Less",
+        "Webpack",
+        "Docker",
+        "GitLab",
+        "Jenkins",
+        "Jira",
+        "Confluence",
+        "Figma",
+        "Scrum",
+        "Ubuntu",
+        "Teams"
+      ]
+    },
+    {
+      "position": "Lead Développeur Front-End JavaScript",
+      "period": "Juillet 2022 — Juin 2023",
+      "client": "Jacadi",
+      "project": "Jacadi",
+      "links": [
+        "https://www.jacadi.fr/"
+      ],
+      "objective": "Refonte et modernisation du front-end du site e-commerce Jacadi, amélioration des performances, de l’accessibilité et du parcours d’achat dans un contexte à fort trafic et fort enjeu business.",
+      "tasks": [
+        "Lead technique front-end sur la modernisation de l’application e-commerce.",
+        "Migration progressive du code jQuery → JavaScript natif (ES6+).",
+        "Refonte UI/UX de pages clés (listing produits, fiche produit, tunnel d’achat).",
+        "Intégration mobile-first / responsive à partir des maquettes.",
+        "Mise en place et amélioration de l’accessibilité (WAI-ARIA).",
+        "Optimisation SEO et qualité du code HTML.",
+        "Intégration d’un système de zoom avancé sur les images produits.",
+        "Développement et optimisation du panier, des étapes de paiement et du choix de point relais.",
+        "Migration des fonctionnalités Google Maps → Azure Maps (Microsoft).",
+        "Optimisation des performances front (temps de chargement, interactions).",
+        "Maintenance évolutive et corrective (TMA).",
+        "Travail en Agile Scrum (Sprint, Daily, Démo, Rétro).",
+        "Suivi projet et tickets via Jira / Confluence.",
+        "Versioning et collaboration via GitLab."
+      ],
+      "tools": [
+        "JavaScript (ES6+)",
+        "HTML5",
+        "CSS3",
+        "Sass",
+        "Hybris",
+        "Azure Maps",
+        "Gulp",
+        "Docker",
+        "BrowserStack",
+        "GitLab",
+        "Jenkins",
+        "Jira",
+        "Confluence",
+        "Scrum",
+        "VS Code",
+        "Ubuntu"
+      ]
+    },
+    {
+      "position": "Développeur Full-Stack Symfony / JavaScript",
+      "period": "Mai 2019 — Avril 2022",
+      "client": "France Télévisions",
+      "project": "Lumni / Cinéma / Éducateurs",
+      "objective": "Refonte et modernisation de plateformes éducatives à forte audience, avec mise en place d’un design system, optimisation des performances, accessibilité et industrialisation des déploiements.",
+      "links": [
+        "https://lumni.fr",
+        "https://educateurs.lumni.fr/",
+        "https://cinema.lumni.fr/edutheque/"
+      ],
+      "tasks": [
+        "Refonte UI complète des plateformes Lumni, Éducateurs et Cinéma.",
+        "Structuration d’un design system basé sur Atomic Design et Storybook.",
+        "Intégration mobile-first / responsive à partir de maquettes Figma.",
+        "Transformation du front jQuery → JavaScript moderne (ES6+).",
+        "Consommation et évolution d’API REST (API Platform).",
+        "Mise en place de tests front automatisés (Cypress).",
+        "Optimisation des performances front (PageSpeed, Dareboost, Lazy Loading).",
+        "Mise en conformité accessibilité (WAI-ARIA) et SEO.",
+        "Développement et déploiement de PWA pour Lumni et Cinéma.",
+        "CI/CD avec Jenkins et déploiements multi-environnements (Intégration, Préprod, Prod).",
+        "Maintenance évolutive et corrective (TMA).",
+        "Travail en Agile Scrum (Sprint, Daily, Démo, Rétro).",
+        "Suivi projet via Jira / Confluence et versioning GitLab."
+      ],
+      "tools": [
+        "JavaScript (ES6+)",
+        "PHP / Symfony",
+        "Twig",
+        "Storybook",
+        "Atomic Design",
+        "HTML5",
+        "CSS3",
+        "Sass",
+        "Webpack",
+        "Docker",
+        "Cypress",
+        "API Platform",
+        "Jenkins",
+        "GitLab",
+        "Jira",
+        "Confluence",
+        "Dareboost",
+        "BrowserStack",
+        "Scrum",
+        "Ubuntu"
+      ]
+    },
+    {
+      "position": "Développeur Full-Stack Vue.js / Symfony",
+      "period": "Octobre 2018 — Avril 2019",
+      "client": "Carrefour Supply Chain",
+      "project": "Nemo",
+      "objective": "Développement d’une application de reporting projets destinée à la Supply Chain, avec visualisation de données, exports automatisés et intégration API.",
+      "tasks": [
+        "Mise en place de l’architecture front-end Vue.js.",
+        "Développement d’interfaces de reporting avec charts dynamiques (Chart.js).",
+        "Consommation et création d’API REST côté back-end.",
+        "Gestion des flux de données et affichage temps réel des indicateurs projets.",
+        "Implémentation de l’export automatisé des graphiques et fiches projets en PowerPoint via PptxGenJS.",
+        "Travail en équipe projet (4 développeurs).",
+        "Méthodologie Agile Scrum (Sprint, Daily, Démo, Rétro)."
+      ],
+      "tools": [
+        "Vue.js",
+        "Vuex",
+        "JavaScript (ES6+)",
+        "HTML5",
+        "Sass",
+        "Webpack",
+        "Docker",
+        "Chart.js",
+        "PptxGenJS",
+        "Symfony",
+        "API REST",
+        "Git",
+        "GitHub",
+        "Jira",
+        "Scrum",
+        "VS Code",
+        "macOS"
+      ]
+    }
+  ]
+}

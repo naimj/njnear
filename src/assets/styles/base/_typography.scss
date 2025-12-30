@@ -1,0 +1,28 @@
+.title {
+  &--h1 {
+    font-size: 32px;
+    margin-bottom: 17px;
+  }
+
+  &--h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  &--decoration {
+    margin-bottom: 2.3125rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      background: $color-primary;
+      border-radius: 0.5rem;
+      height: 0.3125rem;
+      position: absolute;
+      bottom: -1.0625rem;
+      left: 0;
+      width: 2.5rem;
+      z-index: 1;
+    }
+  }
+}
