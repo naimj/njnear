@@ -124,9 +124,6 @@
               ></v-btn>
             </template>
           </v-text-field>
-          <div class="chatbot__powered text-center mt-1 text-caption text-grey-lighten-1">
-            ✨ Powered by Gemini AI
-          </div>
         </v-sheet>
       </v-card>
     </transition>
