@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <div class="sidebar__profile">
       <figure class="sidebar__profile-avatar">
-        <img src="https://art-template.ru/vcard4/assets/images/my-avatar.png" class="sidebar__profile-avatar-img" alt="Naim Jammali" />
+        <img src="@/assets/images/naimIa.png" class="sidebar__profile-avatar-img" alt="Naim Jammali" />
       </figure>
       <h2 class="sidebar__profile-name">{{ cvData.personal_information.name }}</h2>
       <h4 class="sidebar__profile-job">{{ $t('header.job_title') }}</h4>
