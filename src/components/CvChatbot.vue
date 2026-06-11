@@ -1,58 +1,106 @@
 <template>
   <div>
-    <!-- Chat Bubble (FAB) -->
     <v-btn
       icon="mdi-message-text-outline"
       color="primary"
       size="large"
-      class="chat-bubble animate-bounce"
+      class="chatbot__bubble chatbot__bubble--bounce"
       elevation="8"
       @click="toggle"
       v-if="!isOpen"
     ></v-btn>
 
-    <!-- Chat Widget Card -->
     <transition name="slide-fade">
       <v-card
         v-if="isOpen"
-        class="chat-widget rounded-xl border-thin"
+        class="chatbot__widget rounded-xl border-thin"
         elevation="12"
       >
         <!-- Header -->
         <v-toolbar color="primary" density="compact" class="rounded-t-xl">
           <v-toolbar-title class="text-subtitle-1 font-weight-bold d-flex align-center">
-            <v-icon icon="mdi-face-agent" start class="mr-2"></v-icon>
+            <v-icon icon="mdi-robot-outline" start class="mr-2"></v-icon>
             {{ $t('chatbot.title') }}
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn icon="mdi-close" variant="text" density="comfortable" @click="close" :title="$t('chatbot.close')"></v-btn>
+          <v-btn
+            icon="mdi-delete-outline"
+            variant="text"
+            density="comfortable"
+            @click="clearHistory"
+            :title="$t('chatbot.clear')"
+            class="mr-1"
+          ></v-btn>
+          <v-btn
+            icon="mdi-close"
+            variant="text"
+            density="comfortable"
+            @click="close"
+            :title="$t('chatbot.close')"
+          ></v-btn>
         </v-toolbar>
 
-        <!-- Message List -->
-        <v-card-text class="pa-3 chat-content bg-grey-lighten-5" ref="chatContent">
-           <div v-for="(msg, i) in messages" :key="i" :class="['d-flex mb-3', msg.isUser ? 'justify-end' : 'justify-start']">
-             <v-sheet
-               :color="msg.isUser ? 'primary' : 'white'"
-               :class="['pa-3 rounded-lg text-body-2 elevation-1', msg.isUser ? 'rounded-br-0 text-white' : 'rounded-bl-0 text-grey-darken-3']"
-               max-width="85%"
-             >
-               <div style="white-space: pre-wrap;" v-html="msg.text"></div>
-             </v-sheet>
-           </div>
-           
-           <!-- Typing Indicator -->
-           <div v-if="isTyping" class="d-flex mb-3 justify-start">
-             <v-sheet color="white" class="pa-3 rounded-lg rounded-bl-0 elevation-1">
-                <span class="dot-typing">...</span>
-             </v-sheet>
-           </div>
+        <!-- Messages -->
+        <v-card-text class="pa-3 chatbot__content bg-grey-lighten-5" ref="chatContent">
+          <div
+            v-for="(msg, i) in messages"
+            :key="i"
+            :class="['d-flex mb-3', msg.isUser ? 'justify-end' : 'justify-start']"
+          >
+            <!-- Bot avatar -->
+            <v-avatar
+              v-if="!msg.isUser"
+              size="28"
+              color="primary"
+              class="mr-2 mt-1 flex-shrink-0"
+            >
+              <v-icon icon="mdi-robot-outline" size="16" color="white"></v-icon>
+            </v-avatar>
 
-           <div ref="bottomRef"></div>
+            <v-sheet
+              :color="msg.isUser ? 'primary' : 'white'"
+              :class="[
+                'pa-3 rounded-lg elevation-1 chatbot__bubble-msg',
+                msg.isUser ? 'rounded-br-0 text-white' : 'rounded-bl-0 text-grey-darken-3'
+              ]"
+              max-width="82%"
+            >
+              <div
+                v-if="!msg.isUser"
+                class="chatbot__msg-content"
+                v-html="msg.text"
+              ></div>
+              <div v-else style="white-space: pre-wrap;">{{ msg.text }}</div>
+
+              <!-- Timestamp -->
+              <div
+                class="chatbot__timestamp"
+                :class="msg.isUser ? 'text-blue-lighten-4' : 'text-grey-lighten-1'"
+              >
+                {{ msg.time }}
+              </div>
+            </v-sheet>
+          </div>
+
+          <!-- Typing indicator -->
+          <div v-if="isTyping" class="d-flex mb-3 justify-start align-center">
+            <v-avatar size="28" color="primary" class="mr-2 flex-shrink-0">
+              <v-icon icon="mdi-robot-outline" size="16" color="white"></v-icon>
+            </v-avatar>
+            <v-sheet color="white" class="pa-3 rounded-lg rounded-bl-0 elevation-1">
+              <span class="chatbot__typing">
+                <span></span><span></span><span></span>
+              </span>
+            </v-sheet>
+          </div>
+
+          <div ref="bottomRef"></div>
         </v-card-text>
 
-        <!-- Input Area -->
+        <!-- Input -->
         <v-sheet class="pa-3 bg-white border-t" elevation="2">
           <v-text-field
+            ref="inputRef"
             v-model="input"
             :placeholder="$t('chatbot.placeholder')"
             variant="outlined"
@@ -62,19 +110,23 @@
             color="primary"
             bg-color="grey-lighten-5"
             @keyup.enter="sendMessage"
+            :disabled="isTyping"
           >
             <template v-slot:append-inner>
-               <v-btn 
-                 icon="mdi-send" 
-                 variant="text" 
-                 size="small" 
-                 color="primary" 
-                 class="ml-1"
-                 @click="sendMessage" 
-                 :disabled="!input.trim()"
-               ></v-btn>
+              <v-btn
+                icon="mdi-send"
+                variant="text"
+                size="small"
+                color="primary"
+                class="ml-1"
+                @click="sendMessage"
+                :disabled="!input.trim() || isTyping"
+              ></v-btn>
             </template>
           </v-text-field>
+          <div class="chatbot__powered text-center mt-1 text-caption text-grey-lighten-1">
+            ✨ Powered by Gemini AI
+          </div>
         </v-sheet>
       </v-card>
     </transition>
@@ -82,236 +134,190 @@
 </template>
 
 <script setup>
-import { ref, nextTick, watch, computed } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 import { useCVData } from '@/composables/useCVData';
 import { useChat } from '@/composables/useChat';
 import { useI18n } from 'vue-i18n';
+import { aiService } from '@/services/aiService';
 
 const { isOpen, toggle, close } = useChat();
 const { cvData } = useCVData();
 const { t, locale } = useI18n();
 
 const input = ref('');
-const messages = ref([
-  { text: t('chatbot.initial_msg'), isUser: false }
-]);
-const bottomRef = ref(null);
 const isTyping = ref(false);
+const bottomRef = ref(null);
+const inputRef = ref(null);
 
-// Watch for locale changes to reset chat
+const focusInput = () => {
+  nextTick(() => inputRef.value?.focus());
+};
+
+const getTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+const messages = ref([
+  { text: t('chatbot.initial_msg'), isUser: false, time: getTime() }
+]);
+
+// Track conversation history for multi-turn context
+const conversationHistory = ref([]);
+
+// Reset on locale change
 watch(locale, () => {
-  messages.value = [
-    { text: t('chatbot.initial_msg'), isUser: false }
-  ];
+  messages.value = [{ text: t('chatbot.initial_msg'), isUser: false, time: getTime() }];
+  conversationHistory.value = [];
 });
 
-// --- KNOWLEDGE BASE ---
-const knowledgeBase = computed(() => [
+// ── Local fallback knowledge base ──────────────────────────────────────────
+const normalize = (str) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+const knowledgeBase = [
   {
-    id: 'greetings',
     keywords: ['bonjour', 'salut', 'cc', 'hello', 'hi', 'hey', 'yo', 'morning', 'evening'],
     answer: () => t('chatbot.answers.greetings')
   },
   {
-    id: 'thanks',
-    keywords: ['merci', 'thanks', 'thx', 'remercie', 'cool', 'super', 'génial', 'top'],
+    keywords: ['merci', 'thanks', 'thx', 'remercie', 'cool', 'super', 'genial', 'top'],
     answer: () => t('chatbot.answers.thanks')
   },
   {
-    id: 'sentiments',
-    keywords: ['va', 'allez', 'allez-vous', 'vas-tu', 'ça va', 'comment', 'how', 'are', 'you', 'doing', 'bien', 'forme'],
+    keywords: ['va', 'allez', 'comment', 'how', 'are', 'you', 'doing', 'bien', 'forme', 'ca va'],
     answer: () => t('chatbot.answers.sentiments')
   },
   {
-    id: 'identity',
-    keywords: ['qui', 'who', 't', 'es', 'bot', 'assistant', 'ia', 'nom', 'prenom', 'identite'],
-    answer: () => t('chatbot.answers.identity', { name: cvData.value.personal_information.name, title: cvData.value.personal_information.title })
+    keywords: ['qui', 'who', 'bot', 'assistant', 'ia', 'nom', 'prenom', 'identite'],
+    answer: () => t('chatbot.answers.identity', {
+      name: cvData.value.personal_information.name,
+      title: cvData.value.personal_information.title
+    })
   },
   {
-    id: 'contact',
-    keywords: ['contact', 'email', 'mail', 'telephone', 'phone', 'tel', 'joindre', 'appeler', 'linkedin', 'github', 'message', 'ecrire'],
-    answer: () => t('chatbot.answers.contact', { email: cvData.value.personal_information.email, phone: cvData.value.personal_information.phone, linkedin: cvData.value.personal_information.linkedin })
+    keywords: ['contact', 'email', 'mail', 'telephone', 'phone', 'joindre', 'linkedin', 'github'],
+    answer: () => t('chatbot.answers.contact', {
+      email: cvData.value.personal_information.email,
+      phone: cvData.value.personal_information.phone,
+      linkedin: cvData.value.personal_information.linkedin
+    })
   },
   {
-    id: 'skills',
-    keywords: ['competence', 'skill', 'techno', 'technique', 'langage', 'framework', 'outil', 'stack', 'savoir', 'faire', 'maitrise', 'peux-tu', 'connais-tu'],
-    answer: () => t('chatbot.answers.skills', { tech: cvData.value.skills.technical.slice(0, 12).join(', '), func: cvData.value.skills.functional.slice(0, 3).join(', ') })
+    keywords: ['competence', 'skill', 'techno', 'technique', 'langage', 'framework', 'stack'],
+    answer: () => t('chatbot.answers.skills', {
+      tech: cvData.value.skills.technical.slice(0, 12).join(', '),
+      func: cvData.value.skills.functional.slice(0, 3).join(', ')
+    })
   },
   {
-    id: 'experience',
-    keywords: ['experience', 'travail', 'job', 'poste', 'mission', 'career', 'parcours', 'entreprise', 'employeur', "c'est quoi ton dernier"],
+    keywords: ['experience', 'travail', 'job', 'poste', 'mission', 'career', 'parcours', 'entreprise'],
     answer: () => {
       const last = cvData.value.work_experience[0];
-      return t('chatbot.answers.experience', { exp: cvData.value.personal_information.experience, role: last.position, client: last.client, period: last.period, tools: last.tools.slice(0,4).join(', ') })
+      return t('chatbot.answers.experience', {
+        exp: cvData.value.personal_information.experience,
+        role: last.position,
+        client: last.client,
+        period: last.period,
+        tools: last.tools.slice(0, 4).join(', ')
+      });
     }
   },
   {
-    id: 'education',
-    keywords: ['formation', 'ecole', 'diplome', 'etude', 'education', 'degree', 'master', 'ingenieur', 'universite', 'bac'],
-    answer: () => t('chatbot.answers.education', { edu: cvData.value.education_and_languages.education, langs: cvData.value.education_and_languages.languages.join(', ') })
+    keywords: ['formation', 'ecole', 'diplome', 'etude', 'education', 'degree', 'master'],
+    answer: () => t('chatbot.answers.education', {
+      edu: cvData.value.education_and_languages.education,
+      langs: cvData.value.education_and_languages.languages.join(', ')
+    })
   },
   {
-    id: 'profile',
-    keywords: ['profil', 'resume', 'qui est', 'parle moi de', 'bio', 'description', 'about'],
+    keywords: ['profil', 'resume', 'qui est', 'parle moi', 'bio', 'description', 'about'],
     answer: () => t('chatbot.answers.profile_summary', { profile: cvData.value.personal_information.profile })
   }
-]);
+];
 
-// Normalize text: lowercase, remove accents
-const normalize = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const getLocalResponse = (query) => {
+  const clean = normalize(query);
 
-// --- INTELLIGENT MATCHING ---
-const getSmartResponse = (query) => {
-  const cleanQuery = normalize(query);
-  
-  // 1. Specific Skills Search (Fuzzy-ish)
-  const allSkills = [...cvData.value.skills.technical, ...cvData.value.skills.functional].map(s => normalize(s));
-  const foundSkill = allSkills.find(s => cleanQuery.includes(s) || (s.length > 4 && cleanQuery.includes(s.substring(0, s.length - 1))));
-  
-  if (foundSkill) {
-     const originalSkill = [...cvData.value.skills.technical, ...cvData.value.skills.functional].find(s => normalize(s) === foundSkill || (normalize(s).length > 4 && normalize(s).startsWith(foundSkill.substring(0, 4))));
-     return t('chatbot.answers.skill_match', { skill: originalSkill || foundSkill });
-  }
+  const allSkills = [...cvData.value.skills.technical, ...cvData.value.skills.functional];
+  const foundSkill = allSkills.find(s => {
+    const ns = normalize(s);
+    return clean.includes(ns) || (ns.length > 4 && clean.includes(ns.substring(0, ns.length - 1)));
+  });
+  if (foundSkill) return t('chatbot.answers.skill_match', { skill: foundSkill });
 
-  // 2. Domain Match
-  const domain = cvData.value.skills.domains.find(d => cleanQuery.includes(normalize(d)));
-  if (domain) {
-    return t('chatbot.answers.domain_match', { domain });
-  }
+  const domain = cvData.value.skills.domains?.find(d => clean.includes(normalize(d)));
+  if (domain) return t('chatbot.answers.domain_match', { domain });
 
-  // 3. Intent Scoring
-  let bestMatch = null;
-  let maxScore = 0;
-
-  knowledgeBase.value.forEach(intent => {
+  let best = null, maxScore = 0;
+  knowledgeBase.forEach(intent => {
     let score = 0;
     intent.keywords.forEach(k => {
-      // Bonus point for exact word match
-      const regex = new RegExp(`\\b${k}\\b`, 'i');
-      if (regex.test(cleanQuery)) {
-        score += 5;
-      } else if (cleanQuery.includes(k)) {
-        score += 2;
-      }
+      if (new RegExp(`\\b${k}\\b`, 'i').test(clean)) score += 5;
+      else if (clean.includes(k)) score += 2;
     });
-    
-    if (score > maxScore) {
-      maxScore = score;
-      bestMatch = intent;
-    }
+    if (score > maxScore) { maxScore = score; best = intent; }
   });
 
-  // Threshold for relevance
-  if (maxScore >= 2 && bestMatch) {
-    return bestMatch.answer();
-  }
+  if (maxScore >= 2 && best) return best.answer();
 
-  // Fallback with context
-  const lastExp = cvData.value.work_experience[0].client;
-  return t('chatbot.answers.unknown', { client: lastExp });
+  const lastClient = cvData.value.work_experience[0].client;
+  return t('chatbot.answers.unknown', { client: lastClient });
 };
 
-const sendMessage = () => {
-  if (!input.value.trim()) return;
-  
-  messages.value.push({ text: input.value, isUser: true });
-  const userQuery = input.value;
+// ── Send message ────────────────────────────────────────────────────────────
+const sendMessage = async () => {
+  if (!input.value.trim() || isTyping.value) return;
+
+  const userQuery = input.value.trim();
   input.value = '';
   isTyping.value = true;
 
-  // Simulate network delay
-  setTimeout(() => {
-    const response = getSmartResponse(userQuery);
-    messages.value.push({ text: response, isUser: false });
+  messages.value.push({ text: userQuery, isUser: true, time: getTime() });
+
+  try {
+    const historyToSend = conversationHistory.value.map(h => ({ role: h.role, text: h.text }));
+
+    const aiResponse = await aiService.getAiResponse(
+      cvData.value,
+      userQuery,
+      locale.value,
+      historyToSend
+    );
+
+    const responseText = aiResponse || getLocalResponse(userQuery);
+
+    messages.value.push({ text: responseText, isUser: false, time: getTime() });
+
+    // Save to conversation history (keep last 10 exchanges)
+    conversationHistory.value.push({ role: 'user', text: userQuery });
+    conversationHistory.value.push({ role: 'model', text: responseText });
+    if (conversationHistory.value.length > 20) {
+      conversationHistory.value = conversationHistory.value.slice(-20);
+    }
+  } catch (error) {
+    console.error('Chatbot error:', error);
+    messages.value.push({ text: getLocalResponse(userQuery), isUser: false, time: getTime() });
+  } finally {
     isTyping.value = false;
-  }, 600 + Math.random() * 400); // Natural random delay
+    focusInput();
+  }
 };
 
-// Scroll watchers
-watch(messages, () => {
-  nextTick(() => {
-    bottomRef.value?.scrollIntoView({ behavior: 'smooth' });
-  });
-}, { deep: true });
+// ── Clear history ───────────────────────────────────────────────────────────
+const clearHistory = () => {
+  messages.value = [{ text: t('chatbot.initial_msg'), isUser: false, time: getTime() }];
+  conversationHistory.value = [];
+  focusInput();
+};
 
-watch(isTyping, () => {
-  nextTick(() => {
-    bottomRef.value?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+// ── Scroll helpers ──────────────────────────────────────────────────────────
+const scrollToBottom = () => {
+  nextTick(() => { bottomRef.value?.scrollIntoView({ behavior: 'smooth' }); });
+};
 
+watch(messages, scrollToBottom, { deep: true });
+watch(isTyping, scrollToBottom);
 watch(isOpen, (val) => {
-  if (val) {
-    nextTick(() => {
-       bottomRef.value?.scrollIntoView({ behavior: 'auto' });
-    });
-  }
+  if (val) nextTick(() => {
+    bottomRef.value?.scrollIntoView({ behavior: 'auto' });
+    focusInput();
+  });
 });
 </script>
-
-<style scoped>
-.chat-bubble {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-}
-
-.chat-widget {
-  position: fixed;
-  bottom: 90px;
-  right: 24px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  height: 550px;
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 120px);
-}
-
-@media (max-width: 600px) {
-  .chat-bubble {
-    bottom: 16px;
-    right: 16px;
-  }
-  
-  .chat-widget {
-    bottom: 30px;
-    right: 16px;
-    width: calc(100vw - 32px);
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
-
-.chat-content {
-  flex: 1;
-  overflow-y: auto;
-  background-color: #f5f5f5;
-}
-
-/* Animations */
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.animate-bounce {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-</style>

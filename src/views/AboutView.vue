@@ -1,20 +1,17 @@
 <template>
   <v-container class="about-page py-10">
-    <!-- Hero Section -->
     <v-row class="mb-12 align-center">
-
       <v-col cols="12">
         <h1 class="text-h3 font-weight-bold mb-2 text-white">{{ $t('about.hero_title') }}</h1>
         <h2 class="text-h5 text-primary mb-6">{{ cvData.personal_information.title }}</h2>
-        <p class="text-body-1 text-grey-lighten-2 bio-text font-weight-light">
+        <p class="text-body-1 text-grey-lighten-2 about-page__bio-text font-weight-light">
           {{ cvData.personal_information.profile }}
         </p>
       </v-col>
     </v-row>
 
-    <!-- What I Do Section -->
     <div class="mb-16">
-      <h3 class="text-h4 font-weight-bold text-center mb-10 text-white position-relative title-decoration">
+      <h3 class="text-h4 font-weight-bold text-center mb-10 text-white position-relative about-page__title-decoration">
         {{ $t('about.what_i_do') }}
       </h3>
       
@@ -24,7 +21,7 @@
             <v-card 
               v-bind="props"
               :elevation="isHovering ? 12 : 2"
-              class="service-card rounded-xl h-100 pa-4"
+              class="about-page__service-card rounded-xl h-100 pa-4"
               :class="{ 'on-hover': isHovering }"
             >
               <div class="d-flex align-start">
@@ -52,7 +49,6 @@
       </v-row>
     </div>
 
-    <!-- Testimonials Section -->
     <div>
       <h3 class="text-h4 font-weight-bold text-center mb-10 text-white">
         {{ $t('about.testimonials') }}
@@ -62,7 +58,7 @@
         height="auto" 
         hide-delimiter-background 
         show-arrows="hover" 
-        class="testimonial-carousel rounded-xl elevation-5 bg-grey-darken-4 pa-6"
+        class="about-page__testimonial-carousel rounded-xl elevation-5 bg-grey-darken-4 pa-6"
       >
         <v-carousel-item v-for="(testimonial, index) in testimonials" :key="index">
           <div class="d-flex flex-column align-center justify-center fill-height text-center pa-4">
@@ -116,49 +112,3 @@ const services = computed(() => [
   }
 ]);
 </script>
-
-<style lang="scss" scoped>
-@import '@/assets/styles/utils/_variables.scss';
-
-// Local overrides if needed, but primary is now global in Vuetify theme
-.profile-glow {
-  box-shadow: 0 0 30px rgba(4, 180, 224, 0.3) !important;
-  border: 3px solid $hover-color;
-}
-
-.bio-text {
-  line-height: 1.8;
-  font-size: 1.1rem;
-}
-
-.service-card {
-  background-color: #2e2e2e; /* Darker card bg */
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-  
-  &.on-hover {
-    transform: translateY(-8px);
-    background-color: #383838;
-    border-color: $hover-color;
-    box-shadow: 0 10px 30px -10px rgba(4, 180, 224, 0.2) !important;
-  }
-}
-
-.title-decoration {
-  display: inline-block;
-  
-  &::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: $hover-color;
-    margin: auto 0;
-    border-radius: 2px;
-  }
-}
-
-.testimonial-carousel {
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-</style>

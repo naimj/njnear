@@ -7,20 +7,7 @@
       <h2 class="sidebar__profile-name">{{ cvData.personal_information.name }}</h2>
       <h4 class="sidebar__profile-job">{{ $t('header.job_title') }}</h4>
       
-      <!-- Language Switcher -->
-      <div class="mt-2 mb-2">
-        <v-btn-toggle
-          v-model="currentLocale"
-          mandatory
-          rounded="xl"
-          color="primary"
-          density="compact"
-          class="border"
-        >
-          <v-btn value="fr" size="small" variant="text" class="font-weight-bold text-white">FR</v-btn>
-          <v-btn value="en" size="small" variant="text" class="font-weight-bold text-white">EN</v-btn>
-        </v-btn-toggle>
-      </div>
+      <LocaleSwitcher />
     </div>
     <div class="sidebar__info">
       <ul class="sidebar__info-list">
@@ -88,23 +75,15 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n';
-import { computed } from 'vue';
 import { useCVData } from '@/composables/useCVData';
+import LocaleSwitcher from '@/components/LocaleSwitcher.vue';
 
-const { locale } = useI18n();
 const { cvData } = useCVData();
-
-const currentLocale = computed({
-  get: () => locale.value,
-  set: (val) => { locale.value = val }
-});
 
 const socialMediaLinks = [
   { name: 'linkedin', url: 'https://www.linkedin.com/in/naim-jammali-b14a07107/' },
   { name: 'github', url: 'https://github.com/naimj' },
 ];
-
 
 const getIconSrc = (name) => {
   return require(`@/assets/images/icons/${name.toLowerCase()}.svg`);

@@ -1,0 +1,62 @@
+@import '../utils/variables';
+
+.portfolio-page {
+  --v-theme-primary: #{$hover-color};
+
+  &__subtitle {
+    color: $hover-color !important;
+  }
+
+  &__project-card {
+    background-color: #2e2e2e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px -10px rgba(4, 180, 224, 0.25) !important;
+      border-color: $hover-color;
+    }
+  }
+
+  &__title-decoration {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: $hover-color;
+    border-radius: 2px;
+  }
+
+  &__line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__gap {
+    gap: 8px;
+  }
+
+  &__chip-bg {
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  &__animate-slide-in {
+    opacity: 0;
+    animation: portfolioSlideInUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes portfolioSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

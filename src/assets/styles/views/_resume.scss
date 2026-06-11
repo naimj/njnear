@@ -1,0 +1,93 @@
+@import '../utils/variables';
+
+.resume-page {
+  --v-theme-primary: #{$hover-color};
+
+  &__subtitle {
+    color: $hover-color !important;
+  }
+
+  &__card {
+    background-color: #2e2e2e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+
+    &.on-hover {
+      transform: translateY(-5px);
+      background-color: #383838;
+      border-color: $hover-color;
+      box-shadow: 0 10px 30px -10px rgba(4, 180, 224, 0.2) !important;
+    }
+  }
+
+  &__title-decoration {
+    display: inline-block;
+    width: 100%;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: $hover-color;
+      margin: 16px 0;
+      border-radius: 2px;
+    }
+  }
+
+  &__link-hover {
+    transition: color 0.2s;
+    &:hover {
+      color: $hover-color !important;
+      text-decoration: underline;
+    }
+  }
+
+  &__sticky-sidebar {
+    position: sticky;
+    top: 90px;
+  }
+
+  &__gap {
+    gap: 8px;
+  }
+
+  &__chip-bg {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &__task-list {
+    li::marker {
+      color: $hover-color;
+    }
+  }
+
+  &__animate-slide-in {
+    opacity: 0;
+    animation: resumeSlideInRight 0.6s ease-out forwards;
+  }
+}
+
+@keyframes resumeSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Deep overrides
+.resume-page {
+  ::v-deep(.v-expansion-panel-title__overlay) {
+    opacity: 0 !important;
+  }
+  ::v-deep(.v-expansion-panel-text__wrapper) {
+    padding: 16px 0 0 0 !important;
+  }
+  ::v-deep(.v-timeline-item__body) {
+    padding-left: 16px !important;
+  }
+}
