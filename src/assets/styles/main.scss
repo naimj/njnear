@@ -1,8 +1,13 @@
 @import './utils/variables';
 @import './base/common';
 @import './base/typography';
+@import './layout/app';
 @import './components/main-menu';
 @import './components/sidebar';
+@import './components/chatbot';
 @import './views/home';
 @import './views/about';
+@import './views/contact';
+@import './views/portfolio';
+@import './views/resume';
 @import './base/reset';

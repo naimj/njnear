@@ -1,4 +1,8 @@
+@import '../utils/variables';
+
 .home {
+  --v-theme-primary: #{$hover-color};
+
   &__title {
     position: relative;
     text-align: center;
@@ -6,6 +10,56 @@
     font-size: 60px;
     line-height: 74px;
     margin: 0;
-    text-align: center;
+    animation: homePopIn 0.8s ease-out forwards;
+  }
+
+  &__subtitle {
+    color: $hover-color !important;
+    animation: homeSlideUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  &__btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(4, 180, 224, 0.4) !important;
+    animation: homeFadeIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(4, 180, 224, 0.6) !important;
+    }
+  }
+}
+
+/* Simple animations */
+@keyframes homePopIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes homeSlideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes homeFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

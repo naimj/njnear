@@ -1,18 +1,15 @@
 <template>
   <v-container class="contact-page py-10">
-    
-    <!-- Header -->
     <v-row class="mb-12 align-center">
       <v-col cols="12">
         <h1 class="text-h3 font-weight-bold mb-2 text-white">{{ $t('contact.hero_title') }}</h1>
-        <h2 class="text-h5 text-primary mb-6">{{ $t('contact.hero_subtitle') }}</h2>
+        <h2 class="text-h5 mb-6 contact-page__subtitle">{{ $t('contact.hero_subtitle') }}</h2>
       </v-col>
     </v-row>
 
     <v-row>
-      <!-- Contact Form -->
       <v-col cols="12" md="7" lg="8">
-         <v-card class="glass-card pa-6 rounded-xl" elevation="2">
+         <v-card class="contact-page__card pa-6 rounded-xl" elevation="2">
             <h3 class="text-h5 font-weight-bold text-white mb-6 d-flex align-center">
                <v-icon icon="mdi-message-text-outline" color="primary" class="mr-3"></v-icon>
                {{ $t('contact.send_msg_title') }}
@@ -68,7 +65,7 @@
                      color="primary" 
                      size="large" 
                      rounded="pill" 
-                     class="px-8 font-weight-bold shadow-glow"
+                     class="px-8 font-weight-bold contact-page__submit-btn"
                      @click="sendMessage"
                      :loading="loading"
                   >
@@ -80,10 +77,8 @@
          </v-card>
       </v-col>
 
-      <!-- Contact Info -->
       <v-col cols="12" md="5" lg="4">
-        
-        <v-card class="info-card mb-6 pa-5 rounded-xl" elevation="2">
+        <v-card class="contact-page__card mb-6 pa-5 rounded-xl" elevation="2">
             <div class="d-flex align-start mb-4">
                <v-avatar color="primary" variant="tonal" rounded="lg" size="large" class="mr-4">
                   <v-icon icon="mdi-email"></v-icon>
@@ -95,7 +90,7 @@
             </div>
         </v-card>
 
-        <v-card class="info-card mb-6 pa-5 rounded-xl" elevation="2">
+        <v-card class="contact-page__card mb-6 pa-5 rounded-xl" elevation="2">
             <div class="d-flex align-start mb-4">
                <v-avatar color="primary" variant="tonal" rounded="lg" size="large" class="mr-4">
                   <v-icon icon="mdi-phone"></v-icon>
@@ -107,27 +102,25 @@
             </div>
         </v-card>
 
-        <v-card class="info-card mb-6 pa-5 rounded-xl" elevation="2" v-if="cvData.personal_information.linkedin">
+        <v-card class="contact-page__card mb-6 pa-5 rounded-xl" elevation="2" v-if="cvData.personal_information.linkedin">
             <div class="d-flex align-start mb-4">
                <v-avatar color="primary" variant="tonal" rounded="lg" size="large" class="mr-4">
                   <v-icon icon="mdi-linkedin"></v-icon>
                </v-avatar>
                <div>
                   <div class="text-subtitle-2 text-primary font-weight-bold text-uppercase">{{ $t('contact.linkedin_label') }}</div>
-                  <a :href="'https://' + cvData.personal_information.linkedin" target="_blank" class="text-body-1 text-white link-hover">
+                  <a :href="'https://' + cvData.personal_information.linkedin" target="_blank" class="text-body-1 text-white contact-page__link">
                      {{ $t('contact.view_profile') }}
                   </a>
                </div>
             </div>
         </v-card>
-
       </v-col>
     </v-row>
 
-    <!-- Map Section -->
     <v-row class="mt-8">
        <v-col cols="12">
-          <v-card class="rounded-xl overflow-hidden map-card" elevation="4">
+          <v-card class="rounded-xl overflow-hidden contact-page__map" elevation="4">
              <iframe 
                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sen!2sfr!4v1716300000000!5m2!1sen!2sfr" 
                width="100%" 
@@ -140,7 +133,6 @@
           </v-card>
        </v-col>
     </v-row>
-
   </v-container>
 </template>
 
@@ -174,54 +166,9 @@ const sendMessage = () => {
    if (!valid.value) return;
    
    loading.value = true;
-   // Simulate sending
    setTimeout(() => {
      loading.value = false;
      alert(t('contact.msg_sent'));
-     // Reset form logic here if needed
    }, 1500);
 };
-
 </script>
-
-<style lang="scss" scoped>
-@import '@/assets/styles/utils/_variables.scss';
-
-.contact-page {
-  --v-theme-primary: #{$hover-color}; 
-}
-
-.text-primary {
-  color: $hover-color !important;
-}
-
-// Reuse Solid Dark Card Style
-.glass-card, .info-card {
-  background-color: #2e2e2e;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-  
-  &:hover {
-     transform: translateY(-5px);
-     box-shadow: 0 10px 30px -10px rgba(4, 180, 224, 0.15) !important;
-     border-color: rgba(4, 180, 224, 0.3);
-  }
-}
-
-.shadow-glow {
-   box-shadow: 0 0 15px rgba(4, 180, 224, 0.4);
-   transition: box-shadow 0.3s;
-   &:hover {
-      box-shadow: 0 0 25px rgba(4, 180, 224, 0.6);
-   }
-}
-
-.link-hover:hover {
-   color: $hover-color;
-   text-decoration: underline;
-}
-
-.map-card {
-   border: 1px solid rgba(255,255,255,0.1);
-}
-</style>

@@ -14,6 +14,7 @@
         "about": "À propos",
         "resume": "Parcours",
         "portfolio": "Portfolio",
+        "devhub": "Dev Hub",
         "contact": "Contact"
     },
     "home": {
@@ -82,8 +83,9 @@
     "chatbot": {
         "title": "Assistant CV",
         "close": "Fermer",
+        "clear": "Effacer la conversation",
         "placeholder": "Posez-moi une question...",
-        "initial_msg": "Bonjour ! 👋 Je suis l'IA de Naim. Je connais tout son parcours par cœur. Testez-moi !",
+        "initial_msg": "Bonjour ! 👋 Je suis l'assistant IA de Naïm. Je connais son parcours sur le bout des doigts. Qu'aimeriez-vous savoir ?",
         "answers": {
             "identity": "Je suis l'assistant virtuel de <strong>{name}</strong>. Il est <strong>{title}</strong>. Mon rôle est de vous présenter son parcours de manière interactive ! 😊",
             "contact": "Vous pouvez joindre Naim très facilement :<br>📧 <strong>Email :</strong> <a href=\"mailto:{email}\">{email}</a><br>📱 <strong>Tél :</strong> {phone}<br>🔗 <strong>LinkedIn :</strong> <a href=\"https://{linkedin}\" target=\"_blank\">Son profil</a><br><br>N'hésitez pas à lui envoyer un petit message !",
@@ -95,7 +97,7 @@
             "greetings": "Bonjour ! Ravi de vous voir ici. Comment puis-je vous aider à découvrir le profil de Naim ? 👋",
             "thanks": "De rien ! C'est un plaisir de vous renseigner. Autre chose ? 😊",
             "sentiments": "Je vais très bien, merci ! Toujours prêt à parler du talent de Naim. Et vous ?",
-            "profile_summary": "{profile}<br><br>C'est un développeur passionné par la qualité du code et l'expérience utilisateur.",
+            "profile_summary": "{profile}",
             "unknown": "Hmm, je n'ai pas la réponse exacte à cette question... 🤔 Mais je peux vous parler de ses compétences, de son expérience chez {client}, ou vous donner ses contacts !"
         }
     }

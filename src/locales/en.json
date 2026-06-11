@@ -14,6 +14,7 @@
         "about": "About Me",
         "resume": "Resume",
         "portfolio": "Portfolio",
+        "devhub": "Dev Hub",
         "contact": "Contact"
     },
     "home": {
@@ -82,8 +83,9 @@
     "chatbot": {
         "title": "CV Assistant",
         "close": "Close",
+        "clear": "Clear conversation",
         "placeholder": "Ask me a question...",
-        "initial_msg": "Hello! 👋 I am Naim's AI. I know his entire background by heart. Test me!",
+        "initial_msg": "Hello! 👋 I'm Naïm's AI assistant. I know his background inside out. What would you like to know?",
         "answers": {
             "identity": "I am <strong>{name}</strong>'s virtual assistant. He is a <strong>{title}</strong>. My role is to introduce you to his background in an interactive way! 😊",
             "contact": "You can reach Naim easily:<br>📧 <strong>Email:</strong> <a href=\"mailto:{email}\">{email}</a><br>📱 <strong>Phone:</strong> {phone}<br>🔗 <strong>LinkedIn:</strong> <a href=\"https://{linkedin}\" target=\"_blank\">His profile</a><br><br>Don't hesitate to send him a message!",
@@ -95,7 +97,7 @@
             "greetings": "Hello! Nice to see you here. How can I help you discover Naim's profile? 👋",
             "thanks": "You're welcome! It's a pleasure to help. Anything else? 😊",
             "sentiments": "I'm doing great, thank you! Always ready to talk about Naim's talent. How about you?",
-            "profile_summary": "{profile}<br><br>He is a developer passionate about code quality and user experience.",
+            "profile_summary": "{profile}",
             "unknown": "Hmm, I don't have the exact answer to that... 🤔 But I can tell you about his skills, his experience at {client}, or give you his contact details!"
         }
     }

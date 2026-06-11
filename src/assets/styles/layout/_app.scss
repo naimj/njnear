@@ -1,0 +1,22 @@
+@import '../utils/variables';
+
+.app {
+  &__bar {
+    background-color: $color-bg-dark !important;
+  }
+
+  &__drawer {
+    background-color: $color-bg-dark !important;
+  }
+
+  &__drawer-item {
+    &.v-list-item--active {
+      background: rgba(var(--v-theme-primary), 0.1);
+    }
+  }
+}
+
+.main-container {
+  min-height: 100vh;
+  padding: 0 !important;
+}

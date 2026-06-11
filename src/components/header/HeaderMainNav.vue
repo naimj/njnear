@@ -26,9 +26,9 @@
         </RouterLink>
       </li>
       <li class="main-menu__item">
-        <RouterLink to="/contact" class="main-menu__link" active-class="active">
-          <img src="@/assets/images/icons/mail.svg" alt="contact" />
-          <span class="main-menu__link-text">{{ $t('nav.contact') }}</span>
+        <RouterLink to="/devhub" class="main-menu__link" active-class="active">
+          <img src="@/assets/images/icons/terminal.svg" alt="devhub" />
+          <span class="main-menu__link-text">{{ $t('nav.devhub') }}</span>
         </RouterLink>
       </li>
     </ul>

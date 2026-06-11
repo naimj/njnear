@@ -1,0 +1,46 @@
+@import '../utils/variables';
+
+.about-page {
+  --v-theme-primary: #{$hover-color};
+
+  &__bio-text {
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  &__service-card {
+    background-color: #2e2e2e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+
+    &.on-hover {
+      transform: translateY(-8px);
+      background-color: #383838;
+      border-color: $hover-color;
+      box-shadow: 0 10px 30px -10px rgba(4, 180, 224, 0.2) !important;
+    }
+  }
+
+  &__title-decoration {
+    display: inline-block;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: $hover-color;
+      margin: auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  &__testimonial-carousel {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &__profile-glow {
+    box-shadow: 0 0 30px rgba(4, 180, 224, 0.3) !important;
+    border: 3px solid $hover-color;
+  }
+}
