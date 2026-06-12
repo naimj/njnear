@@ -39,6 +39,6 @@ const navItems = [
   { key: 'about', to: '/about', icon: 'mdi-account-outline' },
   { key: 'resume', to: '/resume', icon: 'mdi-file-document-outline' },
   { key: 'portfolio', to: '/portfolio', icon: 'mdi-briefcase-outline' },
-  { key: 'contact', to: '/contact', icon: 'mdi-email-outline' },
+  { key: 'devhub', to: '/devhub', icon: 'mdi-email-outline' },
 ];
 </script>

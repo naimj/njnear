@@ -5,7 +5,7 @@ import AboutView from '../views/AboutView.vue';
 import ResumeView from '../views/ResumeView.vue';
 import PortfolioView from '../views/PortfolioView.vue';
 import DevHub from '../views/DevHub.vue';
-// import ContactView from '../views/ContactView.vue';
+import DevHubJsMethods from '../views/DevHubJsMethods.vue';
 
 const routes = [
     { path: '/', component: HomeView },
@@ -13,7 +13,7 @@ const routes = [
     { path: '/resume', component: ResumeView },
     { path: '/portfolio', component: PortfolioView },
     { path: '/devhub', component: DevHub },
-    // { path: '/contact', component: ContactView },
+    { path: '/devhub/js-array-methods', component: DevHubJsMethods },
 ]
 
 const router = createRouter({

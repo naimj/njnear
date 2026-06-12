@@ -10,7 +10,7 @@
       <v-list-item class="mb-4">
         <div class="d-flex align-center">
           <v-avatar size="60" class="mr-3 border border-primary">
-            <img src="https://art-template.ru/vcard4/assets/images/my-avatar.png" alt="Naim Jammali" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src="@/assets/images/naimIa.png" alt="Naim Jammali" style="width: 100%; height: 100%; object-fit: cover;" />
           </v-avatar>
           <div>
             <div class="text-subtitle-1 font-weight-bold text-white">Naim Jammali</div>

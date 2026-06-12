@@ -100,5 +100,14 @@
             "profile_summary": "{profile}",
             "unknown": "Hmm, je n'ai pas la réponse exacte à cette question... 🤔 Mais je peux vous parler de ses compétences, de son expérience chez {client}, ou vous donner ses contacts !"
         }
+    },
+    "devhub": {
+        "hero_title": "Dev Hub",
+        "hero_subtitle": "Mes ressources & outils de développement",
+        "array_methods": {
+            "title": "Infographie des Méthodes de Tableaux JS",
+            "desc": "Une ressource interactive complète couvrant 22 méthodes de tableaux JavaScript à maîtriser pour les entretiens techniques Senior. Comprend des définitions, des schémas visuels, des cas réels, des pièges classiques et des questions d'embauche.",
+            "action": "Ouvrir l'infographie"
+        }
     }
 }

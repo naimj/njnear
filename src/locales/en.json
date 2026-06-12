@@ -100,5 +100,14 @@
             "profile_summary": "{profile}",
             "unknown": "Hmm, I don't have the exact answer to that... 🤔 But I can tell you about his skills, his experience at {client}, or give you his contact details!"
         }
+    },
+    "devhub": {
+        "hero_title": "Dev Hub",
+        "hero_subtitle": "My developer resources & tools",
+        "array_methods": {
+            "title": "JS Array Methods Infographic",
+            "desc": "A complete interactive reference covering 22 JavaScript array methods to master for Senior technical interviews. Features definitions, visual schemas, real-world examples, common traps, and interview questions.",
+            "action": "Open Infographic"
+        }
     }
 }
